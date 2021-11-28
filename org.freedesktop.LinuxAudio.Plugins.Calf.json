@@ -8,6 +8,7 @@
     "appstream-compose": false,
     "build-options": {
         "prefix": "/app/extensions/Plugins/Calf",
+        "prepend-path": "/app/extensions/Plugins/Calf/bin",
         "prepend-ld-library-path": "/app/extensions/Plugins/Calf/lib",
         "prepend-pkg-config-path": "/app/extensions/Plugins/Calf/lib/pkgconfig"
     },
@@ -22,6 +23,7 @@
         "/include"
     ],
     "modules": [
+        "shared-modules/gtk2/gtk2.json",
         "shared-modules/linux-audio/fluidsynth2-static.json",
         "shared-modules/linux-audio/lv2.json",
         {
