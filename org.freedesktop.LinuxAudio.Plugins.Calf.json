@@ -19,7 +19,9 @@
         "/share/icons",
         "/share/man",
         "/lib/lv2",
-        "/include"
+        "/include",
+        "*.a",
+        "*.la"
     ],
     "modules": [
         "shared-modules/linux-audio/fluidsynth2-static.json",
@@ -41,6 +43,7 @@
                 }
             },
             "post-install": [
+                "strip ${FLATPAK_DEST}/lib/calf/calf.so",
                 "install -Dm644 --target-directory=${FLATPAK_DEST}/share/metainfo org.freedesktop.LinuxAudio.Plugins.Calf.metainfo.xml",
                 "appstream-compose --basename=org.freedesktop.LinuxAudio.Plugins.Calf --prefix=${FLATPAK_DEST} --origin=flatpak org.freedesktop.LinuxAudio.Plugins.Calf",
                 "install -Dm644 -t $FLATPAK_DEST/share/licenses/calf COPYING"
