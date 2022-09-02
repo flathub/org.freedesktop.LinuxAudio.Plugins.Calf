@@ -61,6 +61,10 @@
                     }
                 },
                 {
+                    "type": "patch",
+                    "path": "calf-build-fix.patch"
+                },
+                {
                     "type": "file",
                     "path": "org.freedesktop.LinuxAudio.Plugins.Calf.metainfo.xml"
                 }
