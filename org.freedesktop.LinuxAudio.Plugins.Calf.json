@@ -30,7 +30,9 @@
             "name": "calf",
             "config-opts": [
                 "--with-lv2",
-                "--with-lv2-dir=/app/extensions/Plugins/Calf/lv2",
+                "--with-lv2-dir=/app/extensions/Plugins/Calf/lv2"
+            ],
+            "make-args": [
                 "-DUSE_JACK=OFF"
             ],
             "build-options": {
