@@ -30,7 +30,8 @@
             "name": "calf",
             "config-opts": [
                 "--with-lv2",
-                "--with-lv2-dir=/app/extensions/Plugins/Calf/lv2"
+                "--with-lv2-dir=/app/extensions/Plugins/Calf/lv2",
+                "-DUSE_JACK=OFF"
             ],
             "build-options": {
                 "ldflags": "-lpulse-simple -lpulse -lasound -ldbus-1 -lSDL2 -lreadline -Wl,--export-dynamic -lgmodule-2.0 -pthread -lglib-2.0  -lgomp",
