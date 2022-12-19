@@ -32,10 +32,10 @@
                 "--with-lv2",
                 "--with-lv2-dir=/app/extensions/Plugins/Calf/lv2"
             ],
-            "make-args": [
-                "USE_JACK=OFF"
-            ],
             "build-options": {
+                "env": {
+                    "USE_JACK": "OFF"
+                },
                 "ldflags": "-lpulse-simple -lpulse -lasound -ldbus-1 -lSDL2 -lreadline -Wl,--export-dynamic -lgmodule-2.0 -pthread -lglib-2.0  -lgomp",
                 "arch": {
                     "x86_64": {
