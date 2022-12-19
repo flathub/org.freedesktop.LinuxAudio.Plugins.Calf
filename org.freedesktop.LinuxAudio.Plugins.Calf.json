@@ -34,7 +34,7 @@
             ],
             "build-options": {
                 "env": {
-                    "USE_JACK": "OFF"
+                    "JACK_ENABLED": "no"
                 },
                 "ldflags": "-lpulse-simple -lpulse -lasound -ldbus-1 -lSDL2 -lreadline -Wl,--export-dynamic -lgmodule-2.0 -pthread -lglib-2.0  -lgomp",
                 "arch": {
