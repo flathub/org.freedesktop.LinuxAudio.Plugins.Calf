@@ -33,7 +33,7 @@
                 "--with-lv2-dir=/app/extensions/Plugins/Calf/lv2"
             ],
             "make-args": [
-                "-DUSE_JACK=OFF"
+                "USE_JACK=OFF"
             ],
             "build-options": {
                 "ldflags": "-lpulse-simple -lpulse -lasound -ldbus-1 -lSDL2 -lreadline -Wl,--export-dynamic -lgmodule-2.0 -pthread -lglib-2.0  -lgomp",
