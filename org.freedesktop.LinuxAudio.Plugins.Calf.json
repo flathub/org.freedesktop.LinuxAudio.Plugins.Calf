@@ -51,9 +51,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/calf-studio-gear/calf.git",
-                    "tag": "0.90.3",
-                    "commit": "41a2b7fb029cf0099fc05b7a9c569208034018de",
+                    "url": "https://github.com/Bleuzen/calf.git",
+                    "commit": "024e9deab2d32b26e90b556d36d9c74f6b0aeb17",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$",
