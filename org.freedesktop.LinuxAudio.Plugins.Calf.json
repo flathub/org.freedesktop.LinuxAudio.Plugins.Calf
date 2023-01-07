@@ -24,7 +24,7 @@
         "*.la"
     ],
     "modules": [
-        "shared-modules/linux-audio/fluidsynth2-static.json",
+        "shared-modules/linux-audio/fluidsynth2.json",
         "shared-modules/linux-audio/lv2.json",
         {
             "name": "calf",
