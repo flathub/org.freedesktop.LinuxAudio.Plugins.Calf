@@ -52,12 +52,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Bleuzen/calf.git",
-                    "commit": "bc9e122189c38d3b615eb2df8ffcb9e0206420bf",
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^([\\d.]+)$",
-                        "is-main-source": true
-                    }
+                    "commit": "bc9e122189c38d3b615eb2df8ffcb9e0206420bf"
                 },
                 {
                     "type": "patch",
