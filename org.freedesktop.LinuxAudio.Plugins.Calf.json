@@ -27,22 +27,16 @@
         "shared-modules/linux-audio/lv2.json",
         {
             "name": "calf",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
-                "--with-lv2",
-                "--with-lv2-dir=/app/extensions/Plugins/Calf/lv2"
+                "-DWANT_GUI=NO",
+                "-DWANT_LV2_GUI=NO",
+                "-DCMAKE_BUILD_TYPE=Release"
             ],
-            "build-options": {
-                "ldflags": "-lpulse-simple -lpulse -lasound -ldbus-1 -lSDL2 -lreadline -Wl,--export-dynamic -lgmodule-2.0 -pthread -lglib-2.0  -lgomp",
-                "arch": {
-                    "x86_64": {
-                        "config-opts": [
-                            "--enable-sse"
-                        ]
-                    }
-                }
-            },
             "post-install": [
-                "strip ${FLATPAK_DEST}/lv2/calf.lv2/calf.so",
+                "strip ${FLATPAK_DEST}/lib/lv2/calf.lv2/calf.so",
+                "install -d ${FLATPAK_DEST}/lv2",
+                "mv ${FLATPAK_DEST}/lib/lv2/calf.lv2 ${FLATPAK_DEST}/lv2/",
                 "install -Dm644 --target-directory=${FLATPAK_DEST}/share/metainfo org.freedesktop.LinuxAudio.Plugins.Calf.metainfo.xml",
                 "install -Dm644 -t $FLATPAK_DEST/share/licenses/calf COPYING"
             ],
@@ -57,6 +51,10 @@
                         "tag-pattern": "^([\\d.]+)$",
                         "is-main-source": true
                     }
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/calf-build-fixes.patch"
                 },
                 {
                     "type": "file",
