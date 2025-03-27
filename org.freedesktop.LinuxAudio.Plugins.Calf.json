@@ -50,8 +50,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/calf-studio-gear/calf.git",
-                    "tag": "0.90.4",
-                    "commit": "b7b9aad9d4886cc6910dae77fb8ced00c541aba4",
+                    "tag": "0.90.5",
+                    "commit": "de27462ee14334711e3e6b49cf81b9bac3883d66",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$",
