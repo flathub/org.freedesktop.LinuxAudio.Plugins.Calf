@@ -9,8 +9,11 @@
   <metadata_license>CC0-1.0</metadata_license>
   <update_contact>supgesu_AT_gmail.com</update_contact>
   <releases>
-    <release version="0.90.6" date="2025-03-29">
+    <release version="0.90.7" date="2025-05-11">
       <description></description>
+    </release>
+    <release version="0.90.6" date="2025-03-29">
+      <description/>
     </release>
     <release version="0.90.5" date="2025-03-27">
       <description/>
