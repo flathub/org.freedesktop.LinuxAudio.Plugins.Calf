@@ -1,9 +1,9 @@
 {
     "id": "org.freedesktop.LinuxAudio.Plugins.Calf",
-    "branch": "24.08",
+    "branch": "25.08",
     "runtime": "org.freedesktop.LinuxAudio.BaseExtension",
     "runtime-version": "stable",
-    "sdk": "org.freedesktop.Sdk//24.08",
+    "sdk": "org.freedesktop.Sdk//25.08",
     "build-extension": true,
     "build-options": {
         "prefix": "/app/extensions/Plugins/Calf",
@@ -29,6 +29,7 @@
             "name": "calf",
             "buildsystem": "cmake-ninja",
             "config-opts": [
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
                 "-DWANT_GUI=NO",
                 "-DWANT_LV2_GUI=NO",
                 "-DCMAKE_BUILD_TYPE=Release"
