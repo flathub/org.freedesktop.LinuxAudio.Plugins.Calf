@@ -44,8 +44,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/calf-studio-gear/calf.git",
-                    "tag": "0.90.8",
-                    "commit": "a17dbe7d290a16901a72fa74daabf24dc3e06301",
+                    "tag": "0.90.9",
+                    "commit": "60c4963333de726f0a6d502d97fffe8d7dec8499",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$",
