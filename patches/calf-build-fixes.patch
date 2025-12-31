@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5919ea79..3f73270e 100644
+index 06a505f..70bbb18 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -73,12 +73,12 @@ SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+@@ -80,12 +80,12 @@ SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
  find_package(PkgConfig REQUIRED)
  find_package(Threads REQUIRED)
  find_package(EXPAT REQUIRED)
@@ -17,10 +17,10 @@ index 5919ea79..3f73270e 100644
          include_directories(${GTK_INCLUDE_DIRS})
          set(USE_GUI TRUE)
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index f984e60a..e3429f3b 100644
+index 8d856d8..843ba00 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -23,7 +23,7 @@ endif()
+@@ -27,7 +27,7 @@ endif()
  target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
  
  target_include_directories(${PROJECT_NAME} PRIVATE ${EXPAT_INCLUDE_DIRS} ${FluidSynth_INCLUDE_DIRS})
@@ -29,25 +29,25 @@ index f984e60a..e3429f3b 100644
  
  if(USE_GUI)
      target_include_directories(${PROJECT_NAME} PRIVATE ${GTK_INCLUDE_DIRS})
-@@ -52,7 +52,7 @@ endif()
+@@ -57,7 +57,7 @@ endif()
  if(USE_GUI)
-     add_library(${PROJECT_NAME}gui ctl_curve.cpp ctl_keyboard.cpp ctl_knob.cpp ctl_led.cpp ctl_tube.cpp ctl_vumeter.cpp ctl_frame.cpp ctl_fader.cpp ctl_buttons.cpp ctl_notebook.cpp ctl_meterscale.cpp ctl_combobox.cpp ctl_tuner.cpp ctl_phasegraph.cpp ctl_pattern.cpp gui.cpp gui_config.cpp gui_controls.cpp osctl.cpp plugin_gui_window.cpp preset_gui.cpp utils.cpp ctl_linegraph.cpp drawingutils.cpp)
+ 	add_library(${PROJECT_NAME}gui STATIC ctl_curve.cpp ctl_keyboard.cpp ctl_knob.cpp ctl_led.cpp ctl_tube.cpp ctl_vumeter.cpp ctl_frame.cpp ctl_fader.cpp ctl_buttons.cpp ctl_notebook.cpp ctl_meterscale.cpp ctl_combobox.cpp ctl_tuner.cpp ctl_phasegraph.cpp ctl_pattern.cpp gui.cpp gui_config.cpp gui_controls.cpp osctl.cpp plugin_gui_window.cpp preset_gui.cpp utils.cpp ctl_linegraph.cpp drawingutils.cpp)
      target_include_directories(${PROJECT_NAME}gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 -    target_link_libraries(${PROJECT_NAME}gui PRIVATE Threads::Threads ${GTK_LIBRARIES} fluidsynth)
 +    target_link_libraries(${PROJECT_NAME}gui PRIVATE Threads::Threads ${GTK_LIBRARIES} ${FluidSynth_LIBRARY})
  endif()
  
  
-@@ -64,7 +64,7 @@ if(USE_LV2 AND USE_GUI)
+@@ -68,7 +68,7 @@ if(USE_LV2 AND USE_GUI)
      if (LINKER_SUPPORTS_NODELETE)
          target_link_options(${PROJECT_NAME}lv2gui PRIVATE -Wl,-z,nodelete)
      endif()
 -    target_link_libraries(${PROJECT_NAME}lv2gui PRIVATE Threads::Threads ${GTK_LIBRARIES} ${EXPAT_LIBRARIES} fluidsynth)
 +    target_link_libraries(${PROJECT_NAME}lv2gui PRIVATE Threads::Threads ${GTK_LIBRARIES} ${EXPAT_LIBRARIES} ${FluidSynth_LIBRARY})
      set_target_properties(${PROJECT_NAME} PROPERTIES
-         INSTALL_RPATH "${LV2DIR}"
+         INSTALL_RPATH "${LV2DIR_PROJ}"
          BUILD_WITH_INSTALL_RPATH TRUE
-@@ -78,7 +78,7 @@ if(USE_GUI AND USE_JACK)
+@@ -82,7 +82,7 @@ if(USE_GUI AND USE_JACK)
      add_executable(${PROJECT_NAME}jackhost gtk_session_env.cpp host_session.cpp jack_client.cpp jackhost.cpp gtk_main_win.cpp connector.cpp session_mgr.cpp)
      
      target_include_directories(${PROJECT_NAME}jackhost PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
@@ -55,22 +55,15 @@ index f984e60a..e3429f3b 100644
 +    target_link_libraries(${PROJECT_NAME}jackhost PRIVATE Threads::Threads ${PROJECT_NAME}gui ${PROJECT_NAME} ${JACK_LIBRARIES} ${GTK_LIBRARIES} ${FluidSynth_LIBRARY})
      
      set_target_properties(${PROJECT_NAME}jackhost PROPERTIES
-         INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib/${PROJECT_NAME}"
-@@ -90,13 +90,15 @@ endif()
- # calfmakerdf
+         INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}"
+@@ -95,8 +95,8 @@ endif()
  #
  
-+if(USE_LV2)
- if(MSVC)
-     add_executable(${PROJECT_NAME}makerdf makerdf.cpp getopt_windows.cpp)
- else()
-     add_executable(${PROJECT_NAME}makerdf makerdf.cpp)
- endif()
+ add_executable(${PROJECT_NAME}makerdf makerdf.cpp)
 -target_include_directories(${PROJECT_NAME}makerdf PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${EXPAT_INCLUDE_DIRS})
 -target_link_libraries(${PROJECT_NAME}makerdf PRIVATE ${PROJECT_NAME} Threads::Threads ${EXPAT_LIBRARIES} fluidsynth)
 +target_include_directories(${PROJECT_NAME}makerdf PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${EXPAT_INCLUDE_DIRS} ${LV2_INCLUDE_DIRS})
 +target_link_libraries(${PROJECT_NAME}makerdf PRIVATE ${PROJECT_NAME} Threads::Threads ${EXPAT_LIBRARIES} ${FluidSynth_LIBRARY} ${LV2_LIBRARIES} gmodule-2.0 glib-2.0 asound dbus-1 SDL2 gomp pulse-simple pulse readline)
-+endif()
  
  #
  # install
