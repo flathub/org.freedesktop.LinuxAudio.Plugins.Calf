@@ -38,8 +38,7 @@
                 "strip ${FLATPAK_DEST}/lib/lv2/calf.lv2/calf.so",
                 "install -d ${FLATPAK_DEST}/lv2",
                 "mv ${FLATPAK_DEST}/lib/lv2/calf.lv2 ${FLATPAK_DEST}/lv2/",
-                "install -Dm644 --target-directory=${FLATPAK_DEST}/share/metainfo org.freedesktop.LinuxAudio.Plugins.Calf.metainfo.xml",
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/calf COPYING"
+                "install -Dm644 --target-directory=${FLATPAK_DEST}/share/metainfo org.freedesktop.LinuxAudio.Plugins.Calf.metainfo.xml"
             ],
             "sources": [
                 {
